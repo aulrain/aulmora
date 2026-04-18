@@ -4,7 +4,7 @@ import { Component as EtheralShadow } from './components/ui/etheral-shadow';
 import { FloatingPaths } from './components/ui/background-paths';
 
 export default function App() {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobileOrTouch, setIsMobileOrTouch] = useState(false);
   const { scrollY } = useScroll();
   
   // Smooth scroll values for premium feel
@@ -20,36 +20,44 @@ export default function App() {
   const y2 = useTransform(smoothScrollY, [0, 5000], [0, -250]);
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+    const checkViewport = () => {
+      const isTouch = window.matchMedia('(hover: none)').matches || 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      setIsMobileOrTouch(window.innerWidth <= 768 || isTouch);
     };
     
     // Initial check
-    checkMobile();
+    checkViewport();
     
     // Listen for resize
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener('resize', checkViewport);
+    return () => window.removeEventListener('resize', checkViewport);
   }, []);
 
   return (
     <div className="w-full h-screen fixed inset-0 pointer-events-none" style={{ zIndex: 0, backgroundColor: '#0A0A0A' }}>
-      <EtheralShadow
-        color="rgba(212, 175, 55, 0.5)"
-        animation={{ 
-          scale: isMobile ? 30 : 40, 
-          speed: isMobile ? 70 : 85 
-        }}
-        noise={{ opacity: 0.2, scale: 1.5 }}
-        sizing="stretch"
-      />
+      {isMobileOrTouch ? (
+        <div 
+          className="absolute inset-0" 
+          style={{ background: 'radial-gradient(ellipse at center, rgba(180, 155, 70, 0.08) 0%, transparent 70%)' }}>
+        </div>
+      ) : (
+        <EtheralShadow
+          color="rgba(212, 175, 55, 0.5)"
+          animation={{ 
+            scale: 40, 
+            speed: 85 
+          }}
+          noise={{ opacity: 0.2, scale: 1.5 }}
+          sizing="stretch"
+        />
+      )}
       
       {/* Floating Paths Background */}
       <div className="absolute inset-0 z-[1] opacity-90 overflow-hidden" style={{ mixBlendMode: 'screen', willChange: 'transform' }}>
-        <motion.div style={{ y: y1, scale: 1.5 }} className="absolute inset-0">
+        <motion.div style={{ y: isMobileOrTouch ? 0 : y1, scale: 1.5 }} className="absolute inset-0">
           <FloatingPaths position={1} />
         </motion.div>
-        <motion.div style={{ y: y2, scale: 1.5 }} className="absolute inset-0">
+        <motion.div style={{ y: isMobileOrTouch ? 0 : y2, scale: 1.5 }} className="absolute inset-0">
           <FloatingPaths position={-1} />
         </motion.div>
       </div>

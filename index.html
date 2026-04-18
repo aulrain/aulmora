@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aulmora | Visual Storytelling Studio</title>
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADSElEQVR4nOWY+0tTYRjHn5/Pbup08zrdzEtquqambjpxm+maqAkZkmKFSmmiFJoFmtHVisokM7qpWUZ0gygIKuyG9Vc9cV4iPdvU0S/fzvbD56edBz7Pd+c9z/u+JEkSxzKEFkBDaAE0hBZAQ2gBNIQWQENoATSEFkBDaAE0hBZAQ2gBNIQWQENoATSEFkBDaAE0hBZAQ2gBNIQWQENoATSEFoipAEyJevY5LTzUtYPPHivlG2OVfG20gs8PlfPAgSJurMlkY4I++gLIzjTyRL+Dvy/t4V/Pmjbl66KfT/XZ2Zykj44A6ioy+PMj/5aNB/Ny2sNZ6QnqDmBngTnsv/7xQSMvXakVS+DupItf3PTw6tNAyHNzky51BzA36VI09HbWx94qC2s1mpBnU80GHjlcwj+XlSEU55vUGUCyyaBo5suCn3OsiVvWjfXaFQF0NueqMwCXI03RyJkBR8TLZn3dYGeROgNwOtJ4dsL1F09lRkR11owERQDD3cXqDED6R+xBb0BMBRAfp+OpE7tiIwCDXst5tkSxNA615fOF4XIxHoNHYVQEoNVquKYsnY8fLObb405+PeMNO/fDofoAvFUWsdGJpFk5lPmL7ugJYLCzaNM9/+JltzgI9bUXsN+dxanmuOiZAm27s0Oafn69jrtb88Ws1+tCd4MyURGAVqvh93P1IY3oNmg66gIozE1SNCGva40mslqbxaj+AHxOi6KJ/o7CiGsdhcnqD6DZY1U00btve8S1oz0l6g+gulR5EJo+XRVR3d56G68uB9QfgDFex98er12EyMfipjrrpneFJ3vsIXcBMuNHHeoLQJIkIb6+Ebm5qyMV3O7fxjVlaeK02OK1iec+PVzbAn+416C4RVqZ94tvSnpKnAhWNQGkmAz86pY34jtAmaWpWjEG75+rDvt7Q3WmegKQ/sz0jZpZz8p8Ix/ZXyBOg3Jdq88WHQFIkiTmv3zik097b2a8Ygv840mA392pFxclXS154vUOrusI5Iido/wtka/TFi65xQ5SdQFI/zmEFkBDaAE0hBZAQ2gBNIQWQENoATSEFkBDaAE0hBZAQ2gBNIQWQENoATSEFkBDaAE0hBZAQ2gBNIQWQENoATS/AUtXbX4Cj0vnAAAAAElFTkSuQmCC">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,400;1,600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -1600,6 +1601,24 @@
                 white-space: normal;
             }
         }
+        
+        @media (max-width: 768px), (hover: none) {
+            body {
+                cursor: auto !important;
+            }
+            .cursor-dot, .cursor-ring {
+                display: none !important;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1613,7 +1632,7 @@
     <div class="single-photo-overlay">
         <div class="single-photo-close">✕</div>
         <div class="single-photo-container">
-            <img src="" alt="Enlarged Photo" id="single-photo-img">
+            <img src="" alt="Enlarged Photo" id="single-photo-img" loading="lazy" decoding="async">
         </div>
     </div>
 
@@ -1644,7 +1663,7 @@
             <section class="hero container">
                 <div class="hero-character-container">
                     <!-- Placeholder for the character image. Please upload your transparent character image to the file explorer and name it 'character-transparent.png' -->
-                    <img src="character-transparent.png" alt="Aulmora Character" class="hero-character" id="hero-character" onerror="this.style.display='none'">
+                    <img src="character-transparent.png" alt="Aulmora Character" class="hero-character" id="hero-character" decoding="async" onerror="this.style.display='none'">
                 </div>
                 <div class="hero-content centered-hero">
                     <h1 class="new-hero-title">
@@ -1671,13 +1690,13 @@
                 </div>
                 <div class="works-grid">
                     <div class="work-item" data-project-id="ai-videos">
-                        <img src="https://res.cloudinary.com/dtxyscbco/image/upload/f_auto,q_auto/v1775664292/Generated_Image_April_08_2026_-_7_04PM_fwjixt.jpg" alt="AI Video Projects" class="work-img" id="ai-video-cover">
+                        <img src="https://res.cloudinary.com/dtxyscbco/image/upload/f_auto,q_auto/v1775664292/Generated_Image_April_08_2026_-_7_04PM_fwjixt.jpg" alt="AI Video Projects" class="work-img" id="ai-video-cover" loading="lazy" decoding="async">
                         <div class="work-overlay">
                             <div class="work-category">AI Video Projects</div>
                         </div>
                     </div>
                     <div class="work-item" data-project-id="ai-photos">
-                        <img src="https://res.cloudinary.com/dtxyscbco/image/upload/f_auto,q_auto/v1775664609/Generated_Image_April_08_2026_-_7_09PM_hbsigr.jpg" alt="AI Photography Projects" class="work-img">
+                        <img src="https://res.cloudinary.com/dtxyscbco/image/upload/f_auto,q_auto/v1775664609/Generated_Image_April_08_2026_-_7_09PM_hbsigr.jpg" alt="AI Photography Projects" class="work-img" loading="lazy" decoding="async">
                         <div class="work-overlay">
                             <div class="work-category">AI Photography Projects</div>
                         </div>
@@ -1841,7 +1860,7 @@
     <div class="single-video-overlay">
         <div class="single-video-close">✕</div>
         <div class="single-video-container">
-            <video id="single-video-player" controls playsinline></video>
+            <video id="single-video-player" controls playsinline preload="none"></video>
         </div>
     </div>
 
@@ -1905,38 +1924,43 @@
         // Custom Cursor
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorRing = document.querySelector('.cursor-ring');
-        let mouseX = window.innerWidth / 2;
-        let mouseY = window.innerHeight / 2;
-        let ringX = mouseX;
-        let ringY = mouseY;
+        
+        const isTouchDevice = window.matchMedia('(hover: none)').matches || 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        
+        if (!isTouchDevice) {
+            let mouseX = window.innerWidth / 2;
+            let mouseY = window.innerHeight / 2;
+            let ringX = mouseX;
+            let ringY = mouseY;
 
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            cursorDot.style.left = `${mouseX}px`;
-            cursorDot.style.top = `${mouseY}px`;
-        });
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                cursorDot.style.left = `${mouseX}px`;
+                cursorDot.style.top = `${mouseY}px`;
+            });
 
-        function animateCursor() {
-            ringX += (mouseX - ringX) * 0.35;
-            ringY += (mouseY - ringY) * 0.35;
-            cursorRing.style.left = `${ringX}px`;
-            cursorRing.style.top = `${ringY}px`;
-            requestAnimationFrame(animateCursor);
+            function animateCursor() {
+                ringX += (mouseX - ringX) * 0.35;
+                ringY += (mouseY - ringY) * 0.35;
+                cursorRing.style.left = `${ringX}px`;
+                cursorRing.style.top = `${ringY}px`;
+                requestAnimationFrame(animateCursor);
+            }
+            animateCursor();
+
+            const hoverElements = document.querySelectorAll('a, button, .work-item, .expertise-card, .overlay-close, .single-video-close');
+            hoverElements.forEach(el => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+            });
+
+            const textElements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, span');
+            textElements.forEach(el => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-text'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-text'));
+            });
         }
-        animateCursor();
-
-        const hoverElements = document.querySelectorAll('a, button, .work-item, .expertise-card, .overlay-close, .single-video-close');
-        hoverElements.forEach(el => {
-            el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-        });
-
-        const textElements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, span');
-        textElements.forEach(el => {
-            el.addEventListener('mouseenter', () => document.body.classList.add('cursor-text'));
-            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-text'));
-        });
 
         // Loader Animation
         const loader = document.getElementById('loader');
@@ -2078,12 +2102,12 @@
                 trigger: ".hero",
                 start: "top top",
                 end: "bottom top",
-                scrub: 1
+                scrub: isTouchDevice ? 2 : 1
             }
         });
         
         charTl.to("#hero-character", {
-            yPercent: -30,
+            yPercent: isTouchDevice ? 0 : -30,
             ease: "none"
         }, 0)
         .to(".hero-character-container", {
@@ -2200,13 +2224,13 @@
 
         // Hero Parallax
         gsap.to('.vintage-bg', {
-            yPercent: 10,
+            yPercent: isTouchDevice ? 0 : 10,
             ease: "none",
             scrollTrigger: {
                 trigger: ".vintage-wrapper",
                 start: "top top",
                 end: "bottom top",
-                scrub: true
+                scrub: isTouchDevice ? 2 : true
             }
         });
 
@@ -2236,7 +2260,7 @@
                 trigger: ".manifesto",
                 start: "top 60%",
                 end: "bottom 60%",
-                scrub: 1
+                scrub: isTouchDevice ? 2 : 1
             }
         });
 
@@ -2244,7 +2268,7 @@
         const workItems = document.querySelectorAll('.work-item');
         workItems.forEach(item => {
             gsap.fromTo(item, 
-                { y: 50, opacity: 0 },
+                { y: isTouchDevice ? 0 : 50, opacity: 0 },
                 {
                     y: 0,
                     opacity: 1,
@@ -2275,7 +2299,7 @@
         steps.forEach((step, index) => {
             gsap.from(step, {
                 opacity: 0,
-                y: 30,
+                y: isTouchDevice ? 0 : 30,
                 duration: 0.6,
                 ease: "power3.out",
                 scrollTrigger: {
@@ -2307,7 +2331,7 @@
         serviceItems.forEach((item, index) => {
             gsap.from(item, {
                 opacity: 0,
-                x: -30,
+                x: isTouchDevice ? 0 : -30,
                 duration: 0.6,
                 ease: "power3.out",
                 scrollTrigger: {
@@ -2320,7 +2344,7 @@
         // Expertise Reveal
         gsap.from('#expertise .section-header', {
             opacity: 0,
-            y: 30,
+            y: isTouchDevice ? 0 : 30,
             duration: 0.6,
             ease: "power3.out",
             scrollTrigger: {
@@ -2390,20 +2414,21 @@
                 tags: ['Nano Banana Pro', 'Kling AI', 'Veo', 'Seedance 2.0'],
                 description: 'It begins with visionary storytelling, evolves through precise AI execution, and culminates in a perfectly rendered reality. We push the boundaries of synthetic media to deliver results that are as flawless as they are captivating.',
                 videos: [
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/f_mp4,q_auto/çizi_bigbang-1_rev-3_6_march_inevph.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/f_mp4,q_auto/kliq-1_ai_vfdqeb.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/f_mp4,q_auto/kaşmir_ocak-2_içerik-9_qrcb8s.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/f_mp4,q_auto/iyzico_falling_rev_ibaedd.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/f_mp4,q_auto/Ülker_Çikolata_Bol_Sütlü_Lego_World_ei0qw3.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/f_mp4,q_auto/ÜÇG_Çok_Çıtırtı_AI_Showcase_PS_bprlhm.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/f_mp4,q_auto/duru_olive_ai_english_rev-3_yci6us.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/f_mp4,q_auto/apple_watch_ai_ad_vdnaao.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/f_mp4,q_auto/karaca_tencere_zf0b2q.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/f_mp4,q_auto/mac_alt_üst_rev-1_s6klky.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/f_mp4,q_auto/fashfed_snap_rev-2_hqikjb.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/f_mp4,q_auto/ramsey_ai_ij75oy.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/f_mp4,q_auto/ÜÇG_Çıtırtı_Mode_On_New_opkfr4.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/f_mp4,q_auto/turna_seyahat_zamanı_i1rz9q.mp4'
+                    'https://res.cloudinary.com/dtxyscbco/video/upload/v1776498759/c%CC%A7izi_bigbang-1_rev-3_6_march_xrkerk_vlprrt.mp4',
+                    'https://res.cloudinary.com/dtxyscbco/video/upload/v1776498774/apple_watch_ai_ad_jex1rf_tx78xr.mp4',
+                    'https://res.cloudinary.com/dtxyscbco/video/upload/v1776498766/U%CC%88lker_C%CC%A7ikolata_Bol_Su%CC%88tlu%CC%88_Lego_World_mqrqt7_j0ehit.mp4',
+                    'https://res.cloudinary.com/dtxyscbco/video/upload/v1776499249/kliq-1_ai_m6xsqg_irewnr.mp4',
+                    'https://res.cloudinary.com/dtxyscbco/video/upload/v1776499243/kas%CC%A7mir_ocak-2_ic%CC%A7erik-9_k2rpvb_ifyhve.mp4',
+                    'https://res.cloudinary.com/dtxyscbco/video/upload/v1776498757/iyzico_falling_rev_cgjhrv_ic14bt.mp4',
+                    'https://res.cloudinary.com/dtxyscbco/video/upload/v1776498751/kip_dog_rev_gisbej_x0x21g.mp4',
+                    'https://res.cloudinary.com/dtxyscbco/video/upload/v1776498746/duru_olive_ai_english_rev-3_aj7jop_egt2eh.mp4',
+                    'https://res.cloudinary.com/dtxyscbco/video/upload/v1776498741/mac_alt_u%CC%88st_rev-1_lyo9j0_de5axo.mp4',
+                    'https://res.cloudinary.com/dtxyscbco/video/upload/v1776498720/karaca_tencere_kuseyv_uwuvql.mp4',
+                    'https://res.cloudinary.com/dtxyscbco/video/upload/v1776498756/U%CC%88C%CC%A7G_C%CC%A7%C4%B1t%C4%B1rt%C4%B1_Mode_On_New_aiqzyf_goyhgj.mp4',
+                    'https://res.cloudinary.com/dtxyscbco/video/upload/v1776498709/fashfed_snap_rev-2_ubnbra_hw18bu.mp4',
+                    'https://res.cloudinary.com/dtxyscbco/video/upload/v1776498701/kip_streets_tymqkl_mdozxi.mp4',
+                    'https://res.cloudinary.com/dtxyscbco/video/upload/v1776498718/kas%CC%A7mir_fast_transitions_rev_ph1cmj_gn3ik6.mp4',
+                    'https://res.cloudinary.com/dtxyscbco/video/upload/v1776498748/ramsey_ai_wikfpw_ut35li.mp4'
                 ]
             }
         };
@@ -2442,7 +2467,7 @@
                 data.videos.forEach((src, index) => {
                     videoHtml += `
                         <div class="video-item" data-video-src="${src}" data-video-index="${index}">
-                            <video src="${src}" autoplay loop muted playsinline></video>
+                            <video src="${src}" autoplay loop muted playsinline preload="none"></video>
                         </div>
                     `;
                 });
@@ -2520,26 +2545,26 @@
         
         // REPLACE THESE URLS WITH YOUR OWN IMAGE LINKS
         const myPhotoUrls = [
-            'https://res.cloudinary.com/dtxyscbco/image/upload/v1775814750/hf_20260410_094730_fe4cac96-23cc-4928-b9f6-cf8a44c6ba76_1_reephn.png',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/v1775814303/hf_20260409_161711_6b4e607a-9178-40ae-9e74-ac62cdb241ab_1_1_a1k1v0.png',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/v1775814299/hf_20260409_130912_3b7f77d7-b631-4fd1-8860-dfa7ff498978_1_1_fggjfe.png',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/v1775815372/hf_20260410_100035_c784a816-b15c-4f2d-82b4-0ddda0e82f44_gnmtkn.png',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/v1775820986/hf_20260410_113409_ee68e1ba-78b5-4c17-8c0a-949fc589472e_uodptn.png',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/v1775822992/hf_20260410_120729_b45a7511-db11-4e34-81b2-f0fc9795d4be_1_ta6ibn.png',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/v1775823550/hf_20260410_121344_d9d8d1b6-82e1-4c14-887b-b179c3a509a2_pmwkpm.png',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/v1775823726/hf_20260410_122004_fb64ba67-467e-4b3e-90b5-4d4c3696252b_z5rtgp.png',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/v1775824283/hf_20260410_122820_8f1203ec-2f02-4cda-9173-76392c35cffa_1_sls8mk.png',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/v1775825024/hf_20260410_124132_b8691a34-6dc7-4722-b47c-cd3d85e388c5_k0oaof.png',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/v1775825867/hf_20260410_125200_fe28ba8b-6858-4a73-8295-e98798c1b163_1_silwt1.png',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/v1775858743/hf_20260410_215901_5cb29eee-68f8-4863-aade-46c2f67cdc58_myibvz.png',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776326095/hf_20260416_073703_69a356f7-0725-43a4-a930-720d23794f91_p9fcsc.png',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776326092/hf_20260416_072116_39dfa374-02ca-40b2-a714-936d93a1f7c8_1_yzecer.png',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776326091/hf_20260416_073108_5e641672-8f3b-4a10-b74e-ed49c8c63db0_f4tvmj.png',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776326094/hf_20260416_074004_abfb6732-1897-4f91-be98-9a3345579439_mbfvpu.png',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776326083/hf_20260416_074757_fc98931e-a056-403f-af07-c888b8bc4a90_qgq57y.png',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776326093/hf_20260416_072751_a981f2b6-93e9-493e-b184-32bde1fa21df_jls1qn.png',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776326087/hf_20260416_075111_1a5d6eac-6072-4a02-9e8c-093127bb4707_nometz.png',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776326082/hf_20260416_075300_396e45a0-908f-418a-8b68-f126d5db937b_qiwzuv.png'
+            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776378081/hf_20260409_161711_6b4e607a-9178-40ae-9e74-ac62cdb241ab_1_1_ftpjz4.jpg',
+            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776378078/hf_20260409_130912_3b7f77d7-b631-4fd1-8860-dfa7ff498978_1_1_iu3zm8.jpg',
+            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776378078/hf_20260410_094730_fe4cac96-23cc-4928-b9f6-cf8a44c6ba76_1_yidcck.jpg',
+            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776378074/hf_20260410_100035_c784a816-b15c-4f2d-82b4-0ddda0e82f44_uwtkj8.jpg',
+            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776378074/hf_20260410_113409_ee68e1ba-78b5-4c17-8c0a-949fc589472e_xehdfs.jpg',
+            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776378071/hf_20260410_120729_b45a7511-db11-4e34-81b2-f0fc9795d4be_1_vgkrxp.jpg',
+            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776378069/hf_20260410_121344_d9d8d1b6-82e1-4c14-887b-b179c3a509a2_tsr7pv.jpg',
+            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776378068/hf_20260410_122004_fb64ba67-467e-4b3e-90b5-4d4c3696252b_r5zukp.jpg',
+            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776378067/hf_20260410_122820_8f1203ec-2f02-4cda-9173-76392c35cffa_iozt46.jpg',
+            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776378065/hf_20260410_124132_b8691a34-6dc7-4722-b47c-cd3d85e388c5_hxo2q9.jpg',
+            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776378062/hf_20260410_125200_fe28ba8b-6858-4a73-8295-e98798c1b163_frqjld.jpg',
+            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776378061/hf_20260410_215901_5cb29eee-68f8-4863-aade-46c2f67cdc58_uigqzj.jpg',
+            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776378059/hf_20260416_072116_39dfa374-02ca-40b2-a714-936d93a1f7c8_1_rnim0s.jpg',
+            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776378058/hf_20260416_072751_a981f2b6-93e9-493e-b184-32bde1fa21df_pd5hb9.jpg',
+            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776378056/hf_20260416_073108_5e641672-8f3b-4a10-b74e-ed49c8c63db0_mu3pa4.jpg',
+            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776378055/hf_20260416_073703_69a356f7-0725-43a4-a930-720d23794f91_uoefd1.jpg',
+            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776378052/hf_20260416_074004_abfb6732-1897-4f91-be98-9a3345579439_zepvf9.jpg',
+            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776378050/hf_20260416_074757_fc98931e-a056-403f-af07-c888b8bc4a90_pthcf2.jpg',
+            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776378049/hf_20260416_075111_1a5d6eac-6072-4a02-9e8c-093127bb4707_sph5gs.jpg',
+            'https://res.cloudinary.com/dtxyscbco/image/upload/v1776378048/hf_20260416_075300_396e45a0-908f-418a-8b68-f126d5db937b_1_d7npst.jpg'
         ];
 
         myPhotoUrls.forEach((imgSrc, index) => {
@@ -2558,7 +2583,7 @@
             item.style.fontFamily = 'var(--font-mono)';
             
             item.innerHTML = `
-                <img src="${imgSrc}" alt="Photo ${num}" style="width: 100%; height: 100%; object-fit: cover;" />
+                <img src="${imgSrc}" alt="Photo ${num}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async" />
                 <div class="photo-caption">
                     <div class="photo-caption-title">Aulmora Series ${num}</div>
                     <div class="photo-caption-meta">Photography • 2026</div>
