@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADSElEQVR4nOWY+0tTYRjHn5/Pbup08zrdzEtquqambjpxm+maqAkZkmKFSmmiFJoFmtHVisokM7qpWUZ0gygIKuyG9Vc9cV4iPdvU0S/fzvbD56edBz7Pd+c9z/u+JEkSxzKEFkBDaAE0hBZAQ2gBNIQWQENoATSEFkBDaAE0hBZAQ2gBNIQWQENoATSEFkBDaAE0hBZAQ2gBNIQWQENoATSEFoipAEyJevY5LTzUtYPPHivlG2OVfG20gs8PlfPAgSJurMlkY4I++gLIzjTyRL+Dvy/t4V/Pmjbl66KfT/XZ2Zykj44A6ioy+PMj/5aNB/Ny2sNZ6QnqDmBngTnsv/7xQSMvXakVS+DupItf3PTw6tNAyHNzky51BzA36VI09HbWx94qC2s1mpBnU80GHjlcwj+XlSEU55vUGUCyyaBo5suCn3OsiVvWjfXaFQF0NueqMwCXI03RyJkBR8TLZn3dYGeROgNwOtJ4dsL1F09lRkR11owERQDD3cXqDED6R+xBb0BMBRAfp+OpE7tiIwCDXst5tkSxNA615fOF4XIxHoNHYVQEoNVquKYsnY8fLObb405+PeMNO/fDofoAvFUWsdGJpFk5lPmL7ugJYLCzaNM9/+JltzgI9bUXsN+dxanmuOiZAm27s0Oafn69jrtb88Ws1+tCd4MyURGAVqvh93P1IY3oNmg66gIozE1SNCGva40mslqbxaj+AHxOi6KJ/o7CiGsdhcnqD6DZY1U00btve8S1oz0l6g+gulR5EJo+XRVR3d56G68uB9QfgDFex98er12EyMfipjrrpneFJ3vsIXcBMuNHHeoLQJIkIb6+Ebm5qyMV3O7fxjVlaeK02OK1iec+PVzbAn+416C4RVqZ94tvSnpKnAhWNQGkmAz86pY34jtAmaWpWjEG75+rDvt7Q3WmegKQ/sz0jZpZz8p8Ix/ZXyBOg3Jdq88WHQFIkiTmv3zik097b2a8Ygv840mA392pFxclXS154vUOrusI5Iido/wtka/TFi65xQ5SdQFI/zmEFkBDaAE0hBZAQ2gBNIQWQENoATSEFkBDaAE0hBZAQ2gBNIQWQENoATSEFkBDaAE0hBZAQ2gBNIQWQENoATS/AUtXbX4Cj0vnAAAAAElFTkSuQmCC">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,400;1,600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="character-transparent.png">
     <link rel="preload" as="image" href="https://res.cloudinary.com/dtxyscbco/image/upload/f_auto,q_auto/v1775664292/Generated_Image_April_08_2026_-_7_04PM_fwjixt.jpg">
     <link rel="preload" as="image" href="https://res.cloudinary.com/dtxyscbco/image/upload/f_auto,q_auto/v1775664609/Generated_Image_April_08_2026_-_7_09PM_hbsigr.jpg">
@@ -118,60 +118,6 @@
             background-color: #0a0a0a;
             z-index: 9997;
             pointer-events: none;
-        }
-
-        /* Loader */
-        .loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background-color: #0A0A0A;
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .loader-particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            background-color: #C9A84C;
-            border-radius: 50%;
-        }
-
-        .loader-text {
-            font-family: var(--font-heading);
-            font-size: clamp(3rem, 8vw, 6rem);
-            color: var(--warm-white);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            font-weight: 300;
-            opacity: 0;
-            position: relative;
-            z-index: 2;
-            text-shadow: 0 0 0px rgba(201, 168, 76, 0);
-            transition: color 1s ease, text-shadow 1s ease;
-        }
-        
-        .loader-text.glow {
-            color: #C9A84C;
-            text-shadow: 0 0 30px rgba(201, 168, 76, 0.8), 0 0 60px rgba(201, 168, 76, 0.5);
-        }
-
-        @keyframes textPulse {
-            0%, 100% { text-shadow: 0 0 10px rgba(201, 168, 76, 0.2); }
-            50% { text-shadow: 0 0 30px rgba(201, 168, 76, 0.8), 0 0 50px rgba(201, 168, 76, 0.5); }
         }
 
         /* Navigation */
@@ -1465,7 +1411,7 @@
             width: max-content;
             height: 100%;
             will-change: transform;
-            animation: marqueeScroll 40s linear infinite;
+            animation: marqueeScroll 60s linear infinite;
             transform: translate3d(0, 0, 0);
             backface-visibility: hidden;
             perspective: 1000px;
@@ -1495,6 +1441,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            pointer-events: none;
         }
 
         /* Single Video Player Overlay */
@@ -1672,10 +1619,6 @@
         </div>
     </div>
 
-    <div class="loader" id="loader">
-        <div class="loader-particles" id="loader-particles"></div>
-        <div class="loader-text" id="loader-text">aulmora</div>
-    </div>
 
     <nav>
         <a href="#" class="brand text-backdrop">Aulmora</a>
@@ -1962,6 +1905,7 @@
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorRing = document.querySelector('.cursor-ring');
         
+        const isMobile = window.innerWidth <= 768;
         const isTouchDevice = window.matchMedia('(hover: none)').matches || 'ontouchstart' in window || navigator.maxTouchPoints > 0;
         
         if (!isTouchDevice) {
@@ -2014,12 +1958,8 @@
             });
         }
 
-        // Loader Animation
-        const loader = document.getElementById('loader');
-        const loaderText = document.getElementById('loader-text');
-        const particlesContainer = document.getElementById('loader-particles');
-        
-        function playHeroAnimations(skipAulmoraText = false) {
+        // Intro Reveal Animation
+        function playHeroAnimations() {
             const tlLoader = gsap.timeline();
             tlLoader.to('.hero-character-container', {
                 opacity: 1,
@@ -2031,125 +1971,34 @@
                 y: 0,
                 duration: 0.6,
                 ease: "power2.out"
-            }, "-=0.6");
-            
-            if (!skipAulmoraText) {
-                tlLoader.to('.aulmora-text', {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.8,
-                    ease: "expo.out"
-                }, "-=0.4");
-            }
+            }, "-=0.6")
+            .to('.aulmora-text', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "expo.out"
+            }, "-=0.4");
         }
 
-        if (!sessionStorage.getItem('loaderPlayed')) {
-            document.querySelector('.page-reveal-overlay').style.display = 'none';
-            document.body.style.overflow = 'hidden';
-            
-            // Create particles
-            const numParticles = 120;
-            const particles = [];
-            for (let i = 0; i < numParticles; i++) {
-                const p = document.createElement('div');
-                p.classList.add('particle');
-                
-                const size = 1 + Math.random() * 3;
-                p.style.width = `${size}px`;
-                p.style.height = `${size}px`;
-                p.style.opacity = 0.2 + Math.random() * 0.8;
-                
-                const angle = Math.random() * Math.PI * 2;
-                const distance = Math.max(window.innerWidth, window.innerHeight);
-                const startX = window.innerWidth / 2 + Math.cos(angle) * distance;
-                const startY = window.innerHeight / 2 + Math.sin(angle) * distance;
-                
-                p.style.left = `${startX}px`;
-                p.style.top = `${startY}px`;
-                particlesContainer.appendChild(p);
-                particles.push(p);
+        gsap.to('.page-reveal-overlay', {
+            opacity: 0,
+            duration: 1.2,
+            ease: "power2.inOut",
+            onComplete: () => {
+                document.querySelector('.page-reveal-overlay').style.display = 'none';
             }
-            
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
-            
-            gsap.to(particles, {
-                x: (i, el) => centerX - parseFloat(el.style.left) + (Math.random() - 0.5) * 100,
-                y: (i, el) => centerY - parseFloat(el.style.top) + (Math.random() - 0.5) * 100,
-                opacity: 0,
-                duration: 1.2,
-                ease: "power3.inOut",
-                stagger: {
-                    amount: 0.5,
-                    from: "random"
-                },
-                onComplete: () => {
-                    gsap.to(loaderText, {
-                        opacity: 1,
-                        duration: 0.4,
-                        onComplete: () => {
-                            loaderText.classList.add('glow');
-                            
-                            setTimeout(() => {
-                                // Fade out loader background
-                                gsap.to(loader, {
-                                    backgroundColor: 'rgba(10, 10, 10, 0)',
-                                    duration: 0.8,
-                                    ease: "power2.inOut"
-                                });
-                                
-                                // Get target position
-                                const targetEl = document.querySelector('.aulmora-text');
-                                const originalTransform = targetEl.style.transform;
-                                targetEl.style.transform = 'translateY(0)';
-                                const targetRect = targetEl.getBoundingClientRect();
-                                targetEl.style.transform = originalTransform;
-                                
-                                const loaderTextRect = loaderText.getBoundingClientRect();
-                                const deltaX = targetRect.left + targetRect.width / 2 - (loaderTextRect.left + loaderTextRect.width / 2);
-                                const deltaY = targetRect.top + targetRect.height / 2 - (loaderTextRect.top + loaderTextRect.height / 2);
-                                const scale = targetRect.width / loaderTextRect.width;
-                                
-                                // Start hero animations (except aulmora-text)
-                                playHeroAnimations(true);
-                                
-                                // Animate loader text to target
-                                gsap.to(loaderText, {
-                                    x: deltaX,
-                                    y: deltaY,
-                                    scale: scale,
-                                    duration: 0.8,
-                                    ease: "expo.inOut",
-                                    onComplete: () => {
-                                        loaderText.classList.remove('glow');
-                                        loader.style.display = 'none';
-                                        document.body.style.overflow = '';
-                                        sessionStorage.setItem('loaderPlayed', 'true');
-                                        
-                                        // Show real text
-                                        gsap.set('.aulmora-text', { opacity: 1, y: 0 });
-                                    }
-                                });
-                            }, 400);
-                        }
-                    });
-                }
-            });
-        } else {
-            loader.style.display = 'none';
-            gsap.to('.page-reveal-overlay', {
-                opacity: 0,
-                duration: 1.2,
-                ease: "power2.inOut",
-                onComplete: () => {
-                    document.querySelector('.page-reveal-overlay').style.display = 'none';
-                }
-            });
-            playHeroAnimations();
-        }
+        });
+        playHeroAnimations();
 
         // Character Parallax and Fade
-        const charTl = gsap.timeline({
+        const charTl = gsap.timeline(isMobile ? {
+            paused: true,
+            scrollTrigger: {
+                trigger: ".hero",
+                start: "top 80%",
+                onEnter: () => charTl.play()
+            }
+        } : {
             scrollTrigger: {
                 trigger: ".hero",
                 start: "top top",
@@ -2160,11 +2009,13 @@
         
         charTl.to("#hero-character", {
             yPercent: isTouchDevice ? 0 : -30,
+            duration: isMobile ? 0.8 : 0.5,
             ease: "none"
         }, 0)
         .to(".hero-character-container", {
             maskPosition: "0% 100%",
             WebkitMaskPosition: "0% 100%",
+            duration: isMobile ? 0.8 : 0.5,
             ease: "none"
         }, 0);
 
@@ -2275,10 +2126,16 @@
         });
 
         // Hero Parallax
-        gsap.to('.vintage-bg', {
+        const vintageTl = gsap.to('.vintage-bg', {
             yPercent: isTouchDevice ? 0 : 10,
-            ease: "none",
-            scrollTrigger: {
+            ease: isMobile ? "power2.out" : "none",
+            duration: isMobile ? 0.8 : 0.5,
+            paused: isMobile,
+            scrollTrigger: isMobile ? {
+                trigger: ".vintage-wrapper",
+                start: "top 80%",
+                onEnter: () => vintageTl.play()
+            } : {
                 trigger: ".vintage-wrapper",
                 start: "top top",
                 end: "bottom top",
@@ -2304,11 +2161,17 @@
             }
         });
 
-        gsap.to('.manifesto-word', {
+        const manifestoTl = gsap.to('.manifesto-word', {
             opacity: 1,
             color: '#C9A84C',
             stagger: 0.1,
-            scrollTrigger: {
+            duration: isMobile ? 0.8 : 0.5,
+            paused: isMobile,
+            scrollTrigger: isMobile ? {
+                trigger: ".manifesto",
+                start: "top 80%",
+                onEnter: () => manifestoTl.play()
+            } : {
                 trigger: ".manifesto",
                 start: "top 60%",
                 end: "bottom 60%",
@@ -2466,21 +2329,21 @@
                 tags: ['Nano Banana Pro', 'Kling AI', 'Veo', 'Seedance 2.0'],
                 description: 'It begins with visionary storytelling, evolves through precise AI execution, and culminates in a perfectly rendered reality. We push the boundaries of synthetic media to deliver results that are as flawless as they are captivating.',
                 videos: [
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/q_auto:low,f_auto,w_1280/v1776498759/c%CC%A7izi_bigbang-1_rev-3_6_march_xrkerk_vlprrt.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/q_auto:low,f_auto,w_1280/v1776498774/apple_watch_ai_ad_jex1rf_tx78xr.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/q_auto:low,f_auto,w_1280/v1776498766/U%CC%88lker_C%CC%A7ikolata_Bol_Su%CC%88tlu%CC%88_Lego_World_mqrqt7_j0ehit.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/q_auto:low,f_auto,w_1280/v1776499249/kliq-1_ai_m6xsqg_irewnr.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/q_auto:low,f_auto,w_1280/v1776499243/kas%CC%A7mir_ocak-2_ic%CC%A7erik-9_k2rpvb_ifyhve.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/q_auto:low,f_auto,w_1280/v1776498757/iyzico_falling_rev_cgjhrv_ic14bt.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/q_auto:low,f_auto,w_1280/v1776498751/kip_dog_rev_gisbej_x0x21g.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/q_auto:low,f_auto,w_1280/v1776498746/duru_olive_ai_english_rev-3_aj7jop_egt2eh.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/q_auto:low,f_auto,w_1280/v1776498741/mac_alt_u%CC%88st_rev-1_lyo9j0_de5axo.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/q_auto:low,f_auto,w_1280/v1776498720/karaca_tencere_kuseyv_uwuvql.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/q_auto:low,f_auto,w_1280/v1776498756/U%CC%88C%CC%A7G_C%CC%A7%C4%B1t%C4%B1rt%C4%B1_Mode_On_New_aiqzyf_goyhgj.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/q_auto:low,f_auto,w_1280/v1776498709/fashfed_snap_rev-2_ubnbra_hw18bu.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/q_auto:low,f_auto,w_1280/v1776498701/kip_streets_tymqkl_mdozxi.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/q_auto:low,f_auto,w_1280/v1776498718/kas%CC%A7mir_fast_transitions_rev_ph1cmj_gn3ik6.mp4',
-                    'https://res.cloudinary.com/dtxyscbco/video/upload/q_auto:low,f_auto,w_1280/v1776498748/ramsey_ai_wikfpw_ut35li.mp4'
+                    '/videos/video1.mp4',
+                    '/videos/video2.mp4',
+                    '/videos/video3.mp4',
+                    '/videos/video4.mp4',
+                    '/videos/video5.mp4',
+                    '/videos/video6.mp4',
+                    '/videos/video7.mp4',
+                    '/videos/video8.mp4',
+                    '/videos/video9.mp4',
+                    '/videos/video10.mp4',
+                    '/videos/video11.mp4',
+                    '/videos/video12.mp4',
+                    '/videos/video13.mp4',
+                    '/videos/video14.mp4',
+                    '/videos/video15.mp4'
                 ]
             }
         };
@@ -2520,10 +2383,40 @@
                 // Duplicate array for seamless infinite scroll
                 const seamlessVideos = [...data.videos, ...data.videos];
                 
+                let isMobileInit = window.innerWidth <= 768;
+                let userInteracted = !isMobileInit;
+                const trackDOM = document.getElementById('video-track');
+                
+                const appendRemainingNodes = () => {
+                    userInteracted = true;
+                    // Injecting 15 to 30 if they were omitted initially
+                    trackDOM.querySelectorAll('.video-item.deferred').forEach(item => {
+                        item.classList.remove('deferred');
+                        window.marqueeObserver.observe(item);
+                    });
+                    document.removeEventListener('touchstart', appendRemainingNodes);
+                    document.removeEventListener('scroll', appendRemainingNodes);
+                    document.removeEventListener('click', appendRemainingNodes);
+                };
+                
+                if (isMobileInit) {
+                    document.addEventListener('touchstart', appendRemainingNodes, {once:true, passive:true});
+                    document.addEventListener('scroll', appendRemainingNodes, {once:true, passive:true});
+                    document.addEventListener('click', appendRemainingNodes, {once:true, passive:true});
+                }
+
                 seamlessVideos.forEach((src, index) => {
+                    const isDeferred = isMobileInit && index >= 6;
                     videoHtml += `
-                        <div class="video-item" data-video-src="${src}" data-video-index="${index}">
-                            <video data-src="${src}" loop muted playsinline preload="none"></video>
+                        <div class="video-item ${isDeferred ? 'deferred' : ''}" data-video-index="${index}">
+                            <video data-src="${src}"
+                                muted 
+                                autoplay 
+                                loop 
+                                playsinline 
+                                preload="none"
+                                style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+                            </video>
                         </div>
                     `;
                 });
@@ -2535,7 +2428,7 @@
                 // Track horizontal and vertical visibility for individual videos
                 const observerOptions = {
                     root: null,
-                    rootMargin: '200px 500px 200px 500px', // Preload generously before sliding in
+                    rootMargin: '0px 200px 0px 200px',
                     threshold: 0
                 };
 
@@ -2543,7 +2436,8 @@
                     entries.forEach(entry => {
                         const v = entry.target.querySelector('video');
                         if (entry.isIntersecting) {
-                            if (!v.getAttribute('src')) {
+                            entry.target.dataset.intersecting = "true";
+                            if (!v.getAttribute('src') || v.getAttribute('src') === '') {
                                 v.setAttribute('src', v.getAttribute('data-src'));
                                 v.load();
                             }
@@ -2552,11 +2446,47 @@
                                 p.catch(e => {});
                             }
                         } else {
+                            entry.target.dataset.intersecting = "false";
                             if (!v.paused) {
                                 v.pause();
                             }
                         }
                     });
+
+                    // Memory management logic - modified for max 4 loaded videos instead of distance 3
+                    const videoItemsArray = Array.from(track.querySelectorAll('.video-item'));
+                    let activeLoadedVideos = [];
+                    
+                    videoItemsArray.forEach((item, index) => {
+                        const v = item.querySelector('video');
+                        if (v.getAttribute('src')) {
+                            activeLoadedVideos.push({ item, index, v });
+                        }
+                    });
+
+                    // We want to limit the active loaded to 4 at most based on distance
+                    if (activeLoadedVideos.length > 4) {
+                        videoItemsArray.forEach((item, index) => {
+                            if (item.dataset.intersecting === "false") {
+                                const v = item.querySelector('video');
+                                if (v.getAttribute('src')) {
+                                    let minDistance = Infinity;
+                                    videoItemsArray.forEach((innerItem, innerIndex) => {
+                                        if (innerItem.dataset.intersecting === "true") {
+                                            const dist = Math.abs(innerIndex - index);
+                                            if (dist < minDistance) minDistance = dist;
+                                        }
+                                    });
+                                    // if minDistance > 2 means it's far enough, purge
+                                    if (minDistance > 2 || activeLoadedVideos.length > 4) {
+                                        v.removeAttribute('src');
+                                        v.load();
+                                        activeLoadedVideos = activeLoadedVideos.filter(loaded => loaded.index !== index);
+                                    }
+                                }
+                            }
+                        });
+                    }
                 }, observerOptions);
 
                 // Disconnect previous observer if necessary by re-attaching
@@ -2709,15 +2639,7 @@
             playerOverlay.classList.remove('active');
             setTimeout(() => {
                 plyrPlayer.pause();
-                // Resume background videos
-                document.querySelectorAll('.video-item video').forEach(bgVideo => {
-                    const playPromise = bgVideo.play();
-                    if (playPromise !== undefined) {
-                        playPromise.catch(error => {
-                            // Ignore play interruption errors
-                        });
-                    }
-                });
+                // Resume background videos - now managed by observer automatically
             }, 400); // wait for fade out transition
         });
         
