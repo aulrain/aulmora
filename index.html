@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="dns-prefetch" href="https://res.cloudinary.com">
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aulmora | Visual Storytelling Studio</title>
     <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADSElEQVR4nOWY+0tTYRjHn5/Pbup08zrdzEtquqambjpxm+maqAkZkmKFSmmiFJoFmtHVisokM7qpWUZ0gygIKuyG9Vc9cV4iPdvU0S/fzvbD56edBz7Pd+c9z/u+JEkSxzKEFkBDaAE0hBZAQ2gBNIQWQENoATSEFkBDaAE0hBZAQ2gBNIQWQENoATSEFkBDaAE0hBZAQ2gBNIQWQENoATSEFoipAEyJevY5LTzUtYPPHivlG2OVfG20gs8PlfPAgSJurMlkY4I++gLIzjTyRL+Dvy/t4V/Pmjbl66KfT/XZ2Zykj44A6ioy+PMj/5aNB/Ny2sNZ6QnqDmBngTnsv/7xQSMvXakVS+DupItf3PTw6tNAyHNzky51BzA36VI09HbWx94qC2s1mpBnU80GHjlcwj+XlSEU55vUGUCyyaBo5suCn3OsiVvWjfXaFQF0NueqMwCXI03RyJkBR8TLZn3dYGeROgNwOtJ4dsL1F09lRkR11owERQDD3cXqDED6R+xBb0BMBRAfp+OpE7tiIwCDXst5tkSxNA615fOF4XIxHoNHYVQEoNVquKYsnY8fLObb405+PeMNO/fDofoAvFUWsdGJpFk5lPmL7ugJYLCzaNM9/+JltzgI9bUXsN+dxanmuOiZAm27s0Oafn69jrtb88Ws1+tCd4MyURGAVqvh93P1IY3oNmg66gIozE1SNCGva40mslqbxaj+AHxOi6KJ/o7CiGsdhcnqD6DZY1U00btve8S1oz0l6g+gulR5EJo+XRVR3d56G68uB9QfgDFex98er12EyMfipjrrpneFJ3vsIXcBMuNHHeoLQJIkIb6+Ebm5qyMV3O7fxjVlaeK02OK1iec+PVzbAn+416C4RVqZ94tvSnpKnAhWNQGkmAz86pY34jtAmaWpWjEG75+rDvt7Q3WmegKQ/sz0jZpZz8p8Ix/ZXyBOg3Jdq88WHQFIkiTmv3zik097b2a8Ygv840mA392pFxclXS154vUOrusI5Iido/wtka/TFi65xQ5SdQFI/zmEFkBDaAE0hBZAQ2gBNIQWQENoATSEFkBDaAE0hBZAQ2gBNIQWQENoATSEFkBDaAE0hBZAQ2gBNIQWQENoATS/AUtXbX4Cj0vnAAAAAElFTkSuQmCC">
@@ -11,8 +14,8 @@
     <link rel="preload" as="image" href="character-transparent.png">
     <link rel="preload" as="image" href="https://res.cloudinary.com/dtxyscbco/image/upload/f_auto,q_auto/v1775664292/Generated_Image_April_08_2026_-_7_04PM_fwjixt.jpg">
     <link rel="preload" as="image" href="https://res.cloudinary.com/dtxyscbco/image/upload/f_auto,q_auto/v1775664609/Generated_Image_April_08_2026_-_7_09PM_hbsigr.jpg">
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
-    <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+    
+    
     <style>
         :root {
             --bg-black: #0A0A0A;
@@ -314,6 +317,7 @@
         }
 
         .hero-character-container {
+            will-change: transform;
             position: absolute;
             bottom: -30%;
             left: 50%;
@@ -325,15 +329,6 @@
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            opacity: 0;
-            -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
-            mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
-            -webkit-mask-size: 100% 200%;
-            mask-size: 100% 200%;
-            -webkit-mask-position: 0% 0%;
-            mask-position: 0% 0%;
-            -webkit-mask-repeat: no-repeat;
-            mask-repeat: no-repeat;
         }
 
         .hero::before {
@@ -347,7 +342,6 @@
             background: radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, rgba(212, 175, 55, 0.05) 40%, transparent 70%);
             z-index: 0;
             pointer-events: none;
-            filter: blur(60px);
         }
 
         .hero-character {
@@ -355,7 +349,7 @@
             height: 100%;
             object-fit: contain;
             object-position: bottom center;
-            filter: drop-shadow(0 0 30px rgba(0,0,0,0.8));
+            opacity: 0;
         }
 
         .centered-hero {
@@ -730,12 +724,12 @@
             transform: translateY(-20px);
         }
         .process-arrow {
-            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.8));
-            animation: pulse-glow 2s infinite alternate;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.6));
+            animation: pulse-opacity 2s infinite alternate;
         }
-        @keyframes pulse-glow {
-            0% { filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5)); }
-            100% { filter: drop-shadow(0 0 15px rgba(212, 175, 55, 1)); }
+        @keyframes pulse-opacity {
+            0% { opacity: 0.6; }
+            100% { opacity: 1; }
         }
 
         .step {
@@ -957,58 +951,6 @@
             display: block;
         }
 
-        /* Custom Cursor */
-        * {
-            cursor: none !important;
-        }
-
-        .cursor-dot {
-            width: 10px;
-            height: 10px;
-            background-color: #C9A84C;
-            border-radius: 50%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 99999;
-            opacity: 0.9;
-            transform: translate(-50%, -50%);
-            transition: width 0.3s ease, height 0.3s ease;
-            will-change: transform;
-        }
-
-        .cursor-ring {
-            width: 36px;
-            height: 36px;
-            border: 1.5px solid rgba(201, 168, 76, 0.4);
-            border-radius: 50%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 99999;
-            transform: translate(-50%, -50%);
-            transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
-            will-change: transform;
-        }
-
-        .cursor-hover .cursor-ring {
-            width: 58px;
-            height: 58px;
-            border-color: rgba(201, 168, 76, 0.7);
-        }
-
-        .cursor-hover .cursor-dot {
-            width: 6px;
-            height: 6px;
-        }
-
-        .cursor-text .cursor-ring {
-            width: 25px;
-            height: 25px;
-        }
-
         /* Brush Splashes */
         .splash-wrapper {
             position: absolute;
@@ -1025,17 +967,8 @@
         }
 
         /* Fullscreen Video Fix */
-        .plyr--fullscreen-active video {
-            object-fit: cover !important;
-            width: 100% !important;
-            height: 100% !important;
-        }
-        body.is-fullscreen * {
-            cursor: auto !important;
-        }
-        body.is-fullscreen .cursor-dot, body.is-fullscreen .cursor-ring {
-            display: none !important;
-        }
+        
+        
         
         /* Photo Overlay */
         .photo-overlay {
@@ -1407,6 +1340,7 @@
             background: linear-gradient(to left, #0A0A0A 0%, transparent 100%);
         }
         .video-marquee-track {
+            will-change: transform;
             display: flex;
             width: max-content;
             height: 100%;
@@ -1585,14 +1519,7 @@
             }
         }
         
-        @media (max-width: 768px), (hover: none) {
-            body {
-                cursor: auto !important;
-            }
-            .cursor-dot, .cursor-ring {
-                display: none !important;
-            }
-        }
+        
 
         @media (prefers-reduced-motion: reduce) {
             * {
@@ -1602,14 +1529,22 @@
                 scroll-behavior: auto !important;
             }
         }
+    
+        @media (max-width: 768px) {
+            .hero::before, .hero::after {
+                display: none !important;
+            }
+            body {
+                background: radial-gradient(ellipse at 60% 40%, rgba(180, 155, 70, 0.06) 0%, transparent 60%), #0A0A0A !important;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="page-reveal-overlay"></div>
-    <div class="global-grain"></div>
+    
     <div id="react-background-root" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;"></div>
-    <div class="cursor-dot"></div>
-    <div class="cursor-ring"></div>
+    
 
     <!-- Single Photo Overlay -->
     <div class="single-photo-overlay">
@@ -1881,9 +1816,9 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
     <script>
         // Ensure page always starts at the top on reload
         if ('scrollRestoration' in history) {
@@ -1901,67 +1836,14 @@
         // Register Plugins
         gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-        // Custom Cursor
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorRing = document.querySelector('.cursor-ring');
         
         const isMobile = window.innerWidth <= 768;
         const isTouchDevice = window.matchMedia('(hover: none)').matches || 'ontouchstart' in window || navigator.maxTouchPoints > 0;
         
-        if (!isTouchDevice) {
-            let mouseX = window.innerWidth / 2;
-            let mouseY = window.innerHeight / 2;
-            let ringX = mouseX;
-            let ringY = mouseY;
-
-            document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-                cursorDot.style.left = `${mouseX}px`;
-                cursorDot.style.top = `${mouseY}px`;
-            });
-
-            function animateCursor() {
-                ringX += (mouseX - ringX) * 0.35;
-                ringY += (mouseY - ringY) * 0.35;
-                cursorRing.style.left = `${ringX}px`;
-                cursorRing.style.top = `${ringY}px`;
-                requestAnimationFrame(animateCursor);
-            }
-            animateCursor();
-
-            // Cursor state event delegation for hover and text
-            document.addEventListener('mouseover', (e) => {
-                if (!e.target) return;
-                
-                // Check if target or any ancestor matches hoverable elements
-                if (e.target.closest('a, button, .work-item, .expertise-card, .overlay-close, .single-video-close, .single-photo-close, .photo-overlay-close, .menu-toggle')) {
-                    document.body.classList.add('cursor-hover');
-                }
-                
-                // Check if target or any ancestor matches text elements
-                if (e.target.closest('p, h1, h2, h3, h4, h5, h6, span, label, input, textarea')) {
-                    document.body.classList.add('cursor-text');
-                }
-            });
-
-            document.addEventListener('mouseout', (e) => {
-                if (!e.target) return;
-                
-                if (e.target.closest('a, button, .work-item, .expertise-card, .overlay-close, .single-video-close, .single-photo-close, .photo-overlay-close, .menu-toggle')) {
-                    document.body.classList.remove('cursor-hover');
-                }
-                
-                if (e.target.closest('p, h1, h2, h3, h4, h5, h6, span, label, input, textarea')) {
-                    document.body.classList.remove('cursor-text');
-                }
-            });
-        }
-
         // Intro Reveal Animation
         function playHeroAnimations() {
             const tlLoader = gsap.timeline();
-            tlLoader.to('.hero-character-container', {
+            tlLoader.to('#hero-character', {
                 opacity: 1,
                 duration: 0.8,
                 ease: "power2.inOut"
@@ -1995,7 +1877,7 @@
             paused: true,
             scrollTrigger: {
                 trigger: ".hero",
-                start: "top 80%",
+                start: "top -10%",
                 onEnter: () => charTl.play()
             }
         } : {
@@ -2013,8 +1895,7 @@
             ease: "none"
         }, 0)
         .to(".hero-character-container", {
-            maskPosition: "0% 100%",
-            WebkitMaskPosition: "0% 100%",
+            opacity: 0,
             duration: isMobile ? 0.8 : 0.5,
             ease: "none"
         }, 0);
@@ -2115,14 +1996,14 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.menu-link')) {
                 isMenuOpen = false;
                 menuToggle.classList.remove('active');
                 fullMenu.classList.remove('active');
                 document.body.style.overflow = '';
                 gsap.to(menuLinks, { opacity: 0, y: 30, duration: 0.3 });
-            });
+            }
         });
 
         // Hero Parallax
@@ -2133,13 +2014,13 @@
             paused: isMobile,
             scrollTrigger: isMobile ? {
                 trigger: ".vintage-wrapper",
-                start: "top 80%",
+                start: "top -10%",
                 onEnter: () => vintageTl.play()
             } : {
                 trigger: ".vintage-wrapper",
                 start: "top top",
                 end: "bottom top",
-                scrub: isTouchDevice ? 2 : true
+                scrub: isTouchDevice ? 2 : 1
             }
         });
 
@@ -2329,42 +2210,33 @@
                 tags: ['Nano Banana Pro', 'Kling AI', 'Veo', 'Seedance 2.0'],
                 description: 'It begins with visionary storytelling, evolves through precise AI execution, and culminates in a perfectly rendered reality. We push the boundaries of synthetic media to deliver results that are as flawless as they are captivating.',
                 videos: [
-                    '/videos/video1.mp4',
-                    '/videos/video2.mp4',
-                    '/videos/video3.mp4',
-                    '/videos/video4.mp4',
-                    '/videos/video5.mp4',
-                    '/videos/video6.mp4',
-                    '/videos/video7.mp4',
-                    '/videos/video8.mp4',
-                    '/videos/video9.mp4',
-                    '/videos/video10.mp4',
-                    '/videos/video11.mp4',
-                    '/videos/video12.mp4',
-                    '/videos/video13.mp4',
-                    '/videos/video14.mp4',
-                    '/videos/video15.mp4'
+                    'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+                    'https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+                    'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+                    'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+                    'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
+                    'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+                    'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4',
+                    'https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4',
+                    'https://storage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4',
+                    'https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4',
+                    'https://storage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4',
+                    'https://storage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4',
+                    'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+                    'https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+                    'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4'
                 ]
             }
         };
 
         // Initialize Plyr
-        const plyrPlayer = new Plyr('#single-video-player', {
-            controls: ['play', 'progress', 'current-time'],
-            settings: ['quality', 'speed']
-        });
-
-        plyrPlayer.on('enterfullscreen', event => {
-            document.body.classList.add('is-fullscreen');
-        });
-        plyrPlayer.on('exitfullscreen', event => {
-            document.body.classList.remove('is-fullscreen');
-        });
+        const plyrPlayer = document.getElementById("single-video-player");
 
         // Open Overlay
-        document.querySelectorAll('.work-item[data-project-id="ai-videos"]').forEach(item => {
-            item.addEventListener('click', function() {
-                const projectId = this.getAttribute('data-project-id');
+        document.addEventListener('click', function(e) {
+            const item = e.target.closest('.work-item[data-project-id="ai-videos"]');
+            if (item) {
+                const projectId = item.getAttribute('data-project-id');
                 const data = portfolioData[projectId];
                 if(!data) return;
 
@@ -2428,7 +2300,7 @@
                 // Track horizontal and vertical visibility for individual videos
                 const observerOptions = {
                     root: null,
-                    rootMargin: '0px 200px 0px 200px',
+                    rootMargin: window.innerWidth <= 768 ? '0px 50px 0px 50px' : '0px 100px 0px 100px',
                     threshold: 0
                 };
 
@@ -2495,7 +2367,7 @@
                 }
                 window.marqueeObserver = observer;
                 
-                const videoItems = track.querySelectorAll('.video-item');
+                const videoItems = track.querySelectorAll('.video-item:not(.deferred)');
                 videoItems.forEach(item => observer.observe(item));
 
                 // Animate in
@@ -2515,7 +2387,7 @@
                 );
                 document.body.style.overflow = 'hidden'; // prevent bg scroll
                 document.documentElement.style.overflow = 'hidden';
-            });
+            }
         });
 
         // Close Project Overlay
@@ -2560,7 +2432,9 @@
             'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776512985/hf_20260416_074004_abfb6732-1897-4f91-be98-9a3345579439_zioiko.jpg',
             'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776512985/hf_20260416_074757_fc98931e-a056-403f-af07-c888b8bc4a90_xke9h6.jpg',
             'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776512985/hf_20260416_075111_1a5d6eac-6072-4a02-9e8c-093127bb4707_d2ls5f.jpg',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776512985/hf_20260416_075300_396e45a0-908f-418a-8b68-f126d5db937b_1_wd9t8x.jpg'
+            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776512985/hf_20260416_075300_396e45a0-908f-418a-8b68-f126d5db937b_1_wd9t8x.jpg',
+            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776462561/photo-6_bhmxuq.jpg',
+            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776462555/photo-9_tljpzl.jpg'
         ];
 
         myPhotoUrls.forEach((imgSrc, index) => {
@@ -2611,7 +2485,7 @@
 
             gsap.fromTo('.photo-item',
                 { opacity: 0, y: 15, scale: 0.98 },
-                { opacity: 1, y: 0, scale: 1, duration: 0.4, stagger: 0.03, ease: "cubic-bezier(0.25, 0.46, 0.45, 0.94)", delay: 0.2, clearProps: "transform" }
+                { opacity: 1, y: 0, scale: 1, duration: 0.4, stagger: 0.03, ease: "cubic-bezier(0.25, 0.46, 0.45, 0.94)", delay: 0.05, clearProps: "transform" }
             );
             document.body.style.overflow = 'hidden';
             document.documentElement.style.overflow = 'hidden';
@@ -2692,9 +2566,13 @@
                     document.querySelector('.single-video-close').click();
                 } else if (e.key === ' ' || e.code === 'Space') {
                     e.preventDefault();
-                    const togglePromise = plyrPlayer.togglePlay();
-                    if (togglePromise !== undefined) {
-                        togglePromise.catch(e => {});
+                    if (plyrPlayer.paused) {
+                        const playPromise = plyrPlayer.play();
+                        if (playPromise !== undefined) {
+                            playPromise.catch(e => {});
+                        }
+                    } else {
+                        plyrPlayer.pause();
                     }
                 }
             }
@@ -2726,10 +2604,8 @@
                 duration: 0.2,
                 ease: "power2.in",
                 onComplete: () => {
-                    plyrPlayer.source = {
-                        type: 'video',
-                        sources: [{ src: src, type: 'video/mp4' }]
-                    };
+                    plyrPlayer.src = src;
+                    plyrPlayer.load();
                     const playPromise = plyrPlayer.play();
                     if (playPromise !== undefined) {
                         playPromise.catch(error => {});
