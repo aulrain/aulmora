@@ -2210,21 +2210,21 @@
                 tags: ['Nano Banana Pro', 'Kling AI', 'Veo', 'Seedance 2.0'],
                 description: 'It begins with visionary storytelling, evolves through precise AI execution, and culminates in a perfectly rendered reality. We push the boundaries of synthetic media to deliver results that are as flawless as they are captivating.',
                 videos: [
-                    'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-                    'https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-                    'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
-                    'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
-                    'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
-                    'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
-                    'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4',
-                    'https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4',
-                    'https://storage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4',
-                    'https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4',
-                    'https://storage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4',
-                    'https://storage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4',
-                    'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-                    'https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-                    'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4'
+                    '/videos/video1.mp4',
+                    '/videos/video2.mp4',
+                    '/videos/video3.mp4',
+                    '/videos/video4.mp4',
+                    '/videos/video5.mp4',
+                    '/videos/video6.mp4',
+                    '/videos/video7.mp4',
+                    '/videos/video8.mp4',
+                    '/videos/video9.mp4',
+                    '/videos/video10.mp4',
+                    '/videos/video11.mp4',
+                    '/videos/video12.mp4',
+                    '/videos/video13.mp4',
+                    '/videos/video14.mp4',
+                    '/videos/video15.mp4'
                 ]
             }
         };
@@ -2281,12 +2281,11 @@
                     const isDeferred = isMobileInit && index >= 6;
                     videoHtml += `
                         <div class="video-item ${isDeferred ? 'deferred' : ''}" data-video-index="${index}">
-                            <video data-src="${src}"
+                            <video src="${src}"
                                 muted 
                                 autoplay 
                                 loop 
                                 playsinline 
-                                preload="none"
                                 style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
                             </video>
                         </div>
@@ -2309,10 +2308,6 @@
                         const v = entry.target.querySelector('video');
                         if (entry.isIntersecting) {
                             entry.target.dataset.intersecting = "true";
-                            if (!v.getAttribute('src') || v.getAttribute('src') === '') {
-                                v.setAttribute('src', v.getAttribute('data-src'));
-                                v.load();
-                            }
                             const p = v.play();
                             if (p !== undefined) {
                                 p.catch(e => {});
@@ -2324,41 +2319,6 @@
                             }
                         }
                     });
-
-                    // Memory management logic - modified for max 4 loaded videos instead of distance 3
-                    const videoItemsArray = Array.from(track.querySelectorAll('.video-item'));
-                    let activeLoadedVideos = [];
-                    
-                    videoItemsArray.forEach((item, index) => {
-                        const v = item.querySelector('video');
-                        if (v.getAttribute('src')) {
-                            activeLoadedVideos.push({ item, index, v });
-                        }
-                    });
-
-                    // We want to limit the active loaded to 4 at most based on distance
-                    if (activeLoadedVideos.length > 4) {
-                        videoItemsArray.forEach((item, index) => {
-                            if (item.dataset.intersecting === "false") {
-                                const v = item.querySelector('video');
-                                if (v.getAttribute('src')) {
-                                    let minDistance = Infinity;
-                                    videoItemsArray.forEach((innerItem, innerIndex) => {
-                                        if (innerItem.dataset.intersecting === "true") {
-                                            const dist = Math.abs(innerIndex - index);
-                                            if (dist < minDistance) minDistance = dist;
-                                        }
-                                    });
-                                    // if minDistance > 2 means it's far enough, purge
-                                    if (minDistance > 2 || activeLoadedVideos.length > 4) {
-                                        v.removeAttribute('src');
-                                        v.load();
-                                        activeLoadedVideos = activeLoadedVideos.filter(loaded => loaded.index !== index);
-                                    }
-                                }
-                            }
-                        });
-                    }
                 }, observerOptions);
 
                 // Disconnect previous observer if necessary by re-attaching
