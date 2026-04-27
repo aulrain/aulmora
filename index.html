@@ -1320,6 +1320,9 @@
             .video-marquee-wrapper {
                 height: 40vh;
             }
+            .video-item {
+                margin-right: 12px;
+            }
         }
         .video-marquee-wrapper::before,
         .video-marquee-wrapper::after {
@@ -1370,12 +1373,6 @@
             flex-shrink: 0;
             opacity: 1;
             transform: translateZ(0); /* Force GPU acceleration */
-        }
-        .video-item video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            pointer-events: none;
         }
 
         /* Single Video Player Overlay */
@@ -2210,21 +2207,21 @@
                 tags: ['Nano Banana Pro', 'Kling AI', 'Veo', 'Seedance 2.0'],
                 description: 'It begins with visionary storytelling, evolves through precise AI execution, and culminates in a perfectly rendered reality. We push the boundaries of synthetic media to deliver results that are as flawless as they are captivating.',
                 videos: [
-                    '/videos/video1.mp4',
-                    '/videos/video2.mp4',
-                    '/videos/video3.mp4',
-                    '/videos/video4.mp4',
-                    '/videos/video5.mp4',
-                    '/videos/video6.mp4',
-                    '/videos/video7.mp4',
-                    '/videos/video8.mp4',
-                    '/videos/video9.mp4',
-                    '/videos/video10.mp4',
-                    '/videos/video11.mp4',
-                    '/videos/video12.mp4',
-                    '/videos/video13.mp4',
-                    '/videos/video14.mp4',
-                    '/videos/video15.mp4'
+                    '89b20ab47da1ad2c167beffa9c0f49e7',
+                    '529bcd04177008e58d07f0aa1bf60242',
+                    'e0f8d1cdc1d3afeae24e2714c4d7201a',
+                    '1f856dfd8508c39b3092c3d7e98bb6d6',
+                    'c2f0e3fb1106dc7c968d2c1bfefbef6f',
+                    'e77cc23a940b55df19ab11dfc1049506',
+                    '3f1b68561208a0f5ecb7080bff567f1d',
+                    '77a548b3e404c569668bfa380c9f4fae',
+                    'c65b588232cb90417beff79064477ad6',
+                    '400d51cd37eb67ee21c21ce5f0fa72e0',
+                    '18c69317f0915de9d51c9df9750cc029',
+                    'bd24a24be41667beef9e4dc8df1897d5',
+                    '8012d776fbc0fac5b1026b92829bef4c',
+                    '7c74eb1f5aa4a755e890b63683afe543',
+                    'db9082f446e2a3160e1f160d1bbc9c8d'
                 ]
             }
         };
@@ -2254,81 +2251,21 @@
                 
                 // Duplicate array for seamless infinite scroll
                 const seamlessVideos = [...data.videos, ...data.videos];
-                
-                let isMobileInit = window.innerWidth <= 768;
-                let userInteracted = !isMobileInit;
-                const trackDOM = document.getElementById('video-track');
-                
-                const appendRemainingNodes = () => {
-                    userInteracted = true;
-                    // Injecting 15 to 30 if they were omitted initially
-                    trackDOM.querySelectorAll('.video-item.deferred').forEach(item => {
-                        item.classList.remove('deferred');
-                        window.marqueeObserver.observe(item);
-                    });
-                    document.removeEventListener('touchstart', appendRemainingNodes);
-                    document.removeEventListener('scroll', appendRemainingNodes);
-                    document.removeEventListener('click', appendRemainingNodes);
-                };
-                
-                if (isMobileInit) {
-                    document.addEventListener('touchstart', appendRemainingNodes, {once:true, passive:true});
-                    document.addEventListener('scroll', appendRemainingNodes, {once:true, passive:true});
-                    document.addEventListener('click', appendRemainingNodes, {once:true, passive:true});
-                }
 
-                seamlessVideos.forEach((src, index) => {
-                    const isDeferred = isMobileInit && index >= 6;
+                seamlessVideos.forEach((videoId) => {
                     videoHtml += `
-                        <div class="video-item ${isDeferred ? 'deferred' : ''}" data-video-index="${index}">
-                            <video src="${src}"
-                                muted 
-                                autoplay 
-                                loop 
-                                playsinline 
-                                style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
-                            </video>
+                        <div class="video-item" data-video-id="${videoId}">
+                          <iframe
+                            src="https://customer-h8nb009ss6p39ime.cloudflarestream.com/${videoId}/iframe?autoplay=true&muted=true&loop=true&controls=false&preload=metadata"
+                            loading="lazy"
+                            style="border: none; width: 100%; height: 100%; pointer-events: none;"
+                            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                            allowfullscreen="true">
+                          </iframe>
                         </div>
                     `;
                 });
                 track.innerHTML = videoHtml;
-
-                // IntersectionObserver for lazy loading and playback optimization
-                const videoWrapper = document.querySelector('.video-marquee-wrapper');
-                
-                // Track horizontal and vertical visibility for individual videos
-                const observerOptions = {
-                    root: null,
-                    rootMargin: window.innerWidth <= 768 ? '0px 50px 0px 50px' : '0px 100px 0px 100px',
-                    threshold: 0
-                };
-
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        const v = entry.target.querySelector('video');
-                        if (entry.isIntersecting) {
-                            entry.target.dataset.intersecting = "true";
-                            const p = v.play();
-                            if (p !== undefined) {
-                                p.catch(e => {});
-                            }
-                        } else {
-                            entry.target.dataset.intersecting = "false";
-                            if (!v.paused) {
-                                v.pause();
-                            }
-                        }
-                    });
-                }, observerOptions);
-
-                // Disconnect previous observer if necessary by re-attaching
-                if (window.marqueeObserver) {
-                    window.marqueeObserver.disconnect();
-                }
-                window.marqueeObserver = observer;
-                
-                const videoItems = track.querySelectorAll('.video-item:not(.deferred)');
-                videoItems.forEach(item => observer.observe(item));
 
                 // Animate in
                 gsap.to('.project-overlay', {
@@ -2352,9 +2289,6 @@
 
         // Close Project Overlay
         document.querySelector('.overlay-close').addEventListener('click', () => {
-            if (window.marqueeObserver) {
-                window.marqueeObserver.disconnect();
-            }
             gsap.to('.project-overlay', {
                 y: "100%",
                 duration: 0.4,
@@ -2373,28 +2307,28 @@
         
         // REPLACE THESE URLS WITH YOUR OWN IMAGE LINKS
         const myPhotoUrls = [
-            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776378081/hf_20260409_161711_6b4e607a-9178-40ae-9e74-ac62cdb241ab_1_1_ftpjz4.jpg',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776378078/hf_20260409_130912_3b7f77d7-b631-4fd1-8860-dfa7ff498978_1_1_iu3zm8.jpg',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776378078/hf_20260410_094730_fe4cac96-23cc-4928-b9f6-cf8a44c6ba76_1_yidcck.jpg',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776378074/hf_20260410_100035_c784a816-b15c-4f2d-82b4-0ddda0e82f44_uwtkj8.jpg',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776378074/hf_20260410_113409_ee68e1ba-78b5-4c17-8c0a-949fc589472e_xehdfs.jpg',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776378071/hf_20260410_120729_b45a7511-db11-4e34-81b2-f0fc9795d4be_1_vgkrxp.jpg',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776378069/hf_20260410_121344_d9d8d1b6-82e1-4c14-887b-b179c3a509a2_tsr7pv.jpg',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776378068/hf_20260410_122004_fb64ba67-467e-4b3e-90b5-4d4c3696252b_r5zukp.jpg',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776378067/hf_20260410_122820_8f1203ec-2f02-4cda-9173-76392c35cffa_iozt46.jpg',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776378065/hf_20260410_124132_b8691a34-6dc7-4722-b47c-cd3d85e388c5_hxo2q9.jpg',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776378062/hf_20260410_125200_fe28ba8b-6858-4a73-8295-e98798c1b163_frqjld.jpg',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776378061/hf_20260410_215901_5cb29eee-68f8-4863-aade-46c2f67cdc58_uigqzj.jpg',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776378059/hf_20260416_072116_39dfa374-02ca-40b2-a714-936d93a1f7c8_1_rnim0s.jpg',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776378058/hf_20260416_072751_a981f2b6-93e9-493e-b184-32bde1fa21df_pd5hb9.jpg',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776378056/hf_20260416_073108_5e641672-8f3b-4a10-b74e-ed49c8c63db0_mu3pa4.jpg',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776378055/hf_20260416_073703_69a356f7-0725-43a4-a930-720d23794f91_uoefd1.jpg',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776512985/hf_20260416_074004_abfb6732-1897-4f91-be98-9a3345579439_zioiko.jpg',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776512985/hf_20260416_074757_fc98931e-a056-403f-af07-c888b8bc4a90_xke9h6.jpg',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776512985/hf_20260416_075111_1a5d6eac-6072-4a02-9e8c-093127bb4707_d2ls5f.jpg',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776512985/hf_20260416_075300_396e45a0-908f-418a-8b68-f126d5db937b_1_wd9t8x.jpg',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776462561/photo-6_bhmxuq.jpg',
-            'https://res.cloudinary.com/dtxyscbco/image/upload/q_auto,f_auto,w_1200/v1776462555/photo-9_tljpzl.jpg'
+            'https://imagedelivery.net/0sJRjd-lYPxLHPDDcz_mmg/1c1fd5a1-72b4-4742-9958-c7e6538c3800/public',
+            'https://imagedelivery.net/0sJRjd-lYPxLHPDDcz_mmg/b57e5187-6dc6-49c8-76b5-d7c306c55f00/public',
+            'https://imagedelivery.net/0sJRjd-lYPxLHPDDcz_mmg/bf275d70-55d2-477b-8c18-403a50f07b00/public',
+            'https://imagedelivery.net/0sJRjd-lYPxLHPDDcz_mmg/8358b86e-28b8-4d98-f15c-4eb9b9778300/public',
+            'https://imagedelivery.net/0sJRjd-lYPxLHPDDcz_mmg/3b4ddb9c-9558-45a1-c032-57c0bb8c4f00/public',
+            'https://imagedelivery.net/0sJRjd-lYPxLHPDDcz_mmg/10d27c23-73ed-4723-ce56-26bf7616d700/public',
+            'https://imagedelivery.net/0sJRjd-lYPxLHPDDcz_mmg/f6011d3e-e798-4e1f-1e77-1fea53ecc500/public',
+            'https://imagedelivery.net/0sJRjd-lYPxLHPDDcz_mmg/6be6b8dd-f31e-45e8-a0c9-26df9691d700/public',
+            'https://imagedelivery.net/0sJRjd-lYPxLHPDDcz_mmg/009bf01a-4fa1-4736-c4b2-3dc6fffead00/public',
+            'https://imagedelivery.net/0sJRjd-lYPxLHPDDcz_mmg/6f62a1e2-f346-4649-0d1f-f072dc94a000/public',
+            'https://imagedelivery.net/0sJRjd-lYPxLHPDDcz_mmg/0f430d6f-d571-4f56-f10b-54a4579fd700/public',
+            'https://imagedelivery.net/0sJRjd-lYPxLHPDDcz_mmg/523df01f-8d17-4d13-a97b-1f749e857d00/public',
+            'https://imagedelivery.net/0sJRjd-lYPxLHPDDcz_mmg/6b397511-2d79-4aea-0aa1-1a53f0b7ab00/public',
+            'https://imagedelivery.net/0sJRjd-lYPxLHPDDcz_mmg/e8ff4fc9-bc9f-4514-1ac3-7b0abcaae200/public',
+            'https://imagedelivery.net/0sJRjd-lYPxLHPDDcz_mmg/0fbc70a1-0a6f-4ced-3f9c-9d562e0a6800/public',
+            'https://imagedelivery.net/0sJRjd-lYPxLHPDDcz_mmg/c1bc0f32-77cf-4d02-52cf-11ef3ea91c00/public',
+            'https://imagedelivery.net/0sJRjd-lYPxLHPDDcz_mmg/04c23ebe-7875-4f45-ddb4-6e0f8ca94f00/public',
+            'https://imagedelivery.net/0sJRjd-lYPxLHPDDcz_mmg/707b1985-bce8-453d-c41c-918b6c688500/public',
+            'https://imagedelivery.net/0sJRjd-lYPxLHPDDcz_mmg/fd4e826b-07e6-4d14-fa5d-68f8cbeb9f00/public',
+            'https://imagedelivery.net/0sJRjd-lYPxLHPDDcz_mmg/d554bbda-4578-4c16-d2c6-f10fa53da700/public',
+            'https://imagedelivery.net/0sJRjd-lYPxLHPDDcz_mmg/ae444ebd-cdeb-45f8-e0c9-dc9cf5ce4400/public',
+            'https://imagedelivery.net/0sJRjd-lYPxLHPDDcz_mmg/aad79c38-f86f-4ad3-53d9-95454cb2a000/public'
         ];
 
         myPhotoUrls.forEach((imgSrc, index) => {
